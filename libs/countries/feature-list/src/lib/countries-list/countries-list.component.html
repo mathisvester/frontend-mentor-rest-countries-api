@@ -1,0 +1,15 @@
+<nav>
+  <p>Where in the world?</p>
+  <button>Dark Mode</button>
+</nav>
+<main>
+  <header>
+    <lib-countries-search></lib-countries-search>
+    <lib-countries-filter></lib-countries-filter>
+  </header>
+  <div>
+    @for (country of countries(); track country.alpha2Code) {
+    <lib-countries-list-card [country]="country"></lib-countries-list-card>
+    }
+  </div>
+</main>
