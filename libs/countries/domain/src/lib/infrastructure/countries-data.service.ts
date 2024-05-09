@@ -32,7 +32,6 @@ export class CountriesDataService {
   }
 
   findCountriesByRegion(region: string): Observable<Country[]> {
-    console.log(region);
     return this.getCountries().pipe(
       map((countries) =>
         countries.filter((country) => country.region === region)
