@@ -23,7 +23,7 @@ import { catchError, map, of, switchMap } from 'rxjs';
 })
 export class CountriesDetailComponent {
   readonly countryCode$ = this.route.paramMap.pipe(
-    map((paramMap) => paramMap.get('countryCode'))
+    map((paramMap) => paramMap.get('countryCode')),
   );
 
   readonly country$ = this.countryCode$.pipe(
@@ -34,13 +34,13 @@ export class CountriesDetailComponent {
         throw new Error('Country code must be defined!');
       }
     }),
-    catchError(() => of(null))
+    catchError(() => of(null)),
   );
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly countriesService: CountriesService
+    private readonly countriesService: CountriesService,
   ) {}
 
   navigateToList() {

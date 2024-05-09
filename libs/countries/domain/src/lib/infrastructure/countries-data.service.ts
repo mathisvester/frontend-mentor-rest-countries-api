@@ -19,25 +19,25 @@ export class CountriesDataService {
             (country) =>
               country.alpha2Code === countryCode ||
               country.alpha3Code === countryCode ||
-              country.numericCode === countryCode
-          ) ?? null
-      )
+              country.numericCode === countryCode,
+          ) ?? null,
+      ),
     );
   }
 
   findCountriesByName(name: string): Observable<Country[]> {
     return this.getCountries().pipe(
       map((countries) =>
-        countries.filter((country) => country.name.includes(name))
-      )
+        countries.filter((country) => country.name.includes(name)),
+      ),
     );
   }
 
   findCountriesByRegion(region: string): Observable<Country[]> {
     return this.getCountries().pipe(
       map((countries) =>
-        countries.filter((country) => country.region === region)
-      )
+        countries.filter((country) => country.region === region),
+      ),
     );
   }
 }

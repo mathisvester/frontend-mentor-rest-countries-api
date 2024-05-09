@@ -15,19 +15,19 @@ export class CountriesService {
 
   findCountryByCountryCode(countryCode: string): Observable<Country> {
     return this.httpClient.get<Country>(
-      `https://restcountries.com/v2/alpha/${countryCode}`
+      `https://restcountries.com/v2/alpha/${countryCode}`,
     );
   }
 
   findCountriesByName(name: string): Observable<Country[]> {
     return this.httpClient.get<Country[]>(
-      `https://restcountries.com/v2/name/${name}`
+      `https://restcountries.com/v2/name/${name}`,
     );
   }
 
   findCountriesByRegion(region: string): Observable<Country[]> {
     return this.httpClient.get<Country[]>(
-      `https://restcountries.com/v2/region/${region}`
+      `https://restcountries.com/v2/region/${region}`,
     );
   }
 }

@@ -9,10 +9,10 @@
   </header>
   <div>
     @for (country of countries(); track country.alpha2Code) {
-    <lib-countries-list-card
-      [country]="country"
-      (cardClick)="navigateToDetail($event)"
-    ></lib-countries-list-card>
+      <lib-countries-list-card
+        [country]="country"
+        (cardClick)="navigateToDetail($event)"
+      ></lib-countries-list-card>
     }
   </div>
 </lib-page>

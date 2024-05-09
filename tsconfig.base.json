@@ -21,10 +21,10 @@
       "@rest-countries-api/countries-ui-common": [
         "libs/countries/ui-common/src/index.ts"
       ],
-      "@rest-countries-api/countries/feature-detail": [
+      "@rest-countries-api/countries-feature-detail": [
         "libs/countries/feature-detail/src/index.ts"
       ],
-      "@rest-countries-api/countries/feature-list": [
+      "@rest-countries-api/countries-feature-list": [
         "libs/countries/feature-list/src/index.ts"
       ],
       "@rest-countries-api/ui-common": ["libs/shared/ui-common/src/index.ts"]

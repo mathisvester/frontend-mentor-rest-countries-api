@@ -1,22 +1,22 @@
 <lib-page
   ><lib-button [label]="'Back'" (click)="navigateToList()"></lib-button>
-  @if(country$ | async; as country) {
-  <div>
-    <h1>{{ country.name }}</h1>
-    @if(country?.borders) {
+  @if (country$ | async; as country) {
     <div>
-      Border Countries:
-      <ul>
-        @for(border of country.borders; track border) {
-        <li>
-          <a [routerLink]="['/countries', border]">{{ border }}</a>
-        </li>
-        }
-      </ul>
+      <h1>{{ country.name }}</h1>
+      @if (country?.borders) {
+        <div>
+          Border Countries:
+          <ul>
+            @for (border of country.borders; track border) {
+              <li>
+                <a [routerLink]="['/countries', border]">{{ border }}</a>
+              </li>
+            }
+          </ul>
+        </div>
+      }
     </div>
-    }
-  </div>
   } @else {
-  <div><p>Country not found!</p></div>
+    <div><p>Country not found!</p></div>
   }
 </lib-page>
