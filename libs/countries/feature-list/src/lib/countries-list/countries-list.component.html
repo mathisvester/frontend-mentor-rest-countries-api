@@ -1,6 +1,8 @@
 <lib-page>
   <header>
-    <lib-countries-search></lib-countries-search>
+    <lib-countries-search
+      (searchStringChange)="currentSearchString.set($event)"
+    ></lib-countries-search>
     <lib-countries-filter
       (regionChange)="selectedRegion.set($event)"
     ></lib-countries-filter>

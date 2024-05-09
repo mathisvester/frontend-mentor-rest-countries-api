@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent, PageComponent } from '@rest-countries-api/ui-common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {
   CountriesDataService,
   CountriesService,
@@ -11,7 +11,7 @@ import { catchError, map, of, switchMap } from 'rxjs';
 @Component({
   selector: 'lib-countries-detail',
   standalone: true,
-  imports: [CommonModule, PageComponent, ButtonComponent],
+  imports: [CommonModule, PageComponent, ButtonComponent, RouterLink],
   templateUrl: './countries-detail.component.html',
   styleUrl: './countries-detail.component.css',
   providers: [
@@ -22,16 +22,16 @@ import { catchError, map, of, switchMap } from 'rxjs';
   ],
 })
 export class CountriesDetailComponent {
-  countryCode$ = this.route.paramMap.pipe(
+  readonly countryCode$ = this.route.paramMap.pipe(
     map((paramMap) => paramMap.get('countryCode'))
   );
 
-  country$ = this.countryCode$.pipe(
+  readonly country$ = this.countryCode$.pipe(
     switchMap((countryCode) => {
       if (countryCode) {
         return this.countriesService.findCountryByCountryCode(countryCode);
       } else {
-        throw new Error('Country code must be defined! ');
+        throw new Error('Country code must be defined!');
       }
     }),
     catchError(() => of(null))

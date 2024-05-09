@@ -18,6 +18,9 @@
       "@rest-countries-api/countries-domain": [
         "libs/countries/domain/src/index.ts"
       ],
+      "@rest-countries-api/countries-ui-common": [
+        "libs/countries/ui-common/src/index.ts"
+      ],
       "@rest-countries-api/countries/feature-detail": [
         "libs/countries/feature-detail/src/index.ts"
       ],

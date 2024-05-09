@@ -3,22 +3,28 @@ import { CommonModule } from '@angular/common';
 import {
   CountriesDataService,
   CountriesService,
+  Country,
 } from '@rest-countries-api/countries-domain';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { HttpClientModule } from '@angular/common/http';
-import { CountriesSearchComponent } from '../countries-search/countries-search.component';
-import { CountriesFilterComponent } from '../countries-filter/countries-filter.component';
-import { CountriesListCardComponent } from './countries-list-card/countries-list-card.component';
 import { PageComponent } from '@rest-countries-api/ui-common';
 import { Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import {
+  combineLatest,
+  debounceTime,
+  distinctUntilChanged,
+  switchMap,
+} from 'rxjs';
+import {
+  CountriesFilterComponent,
+  CountriesListCardComponent,
+  CountriesSearchComponent,
+} from '@rest-countries-api/countries-ui-common';
 
 @Component({
   selector: 'lib-countries-list',
   standalone: true,
   imports: [
     CommonModule,
-    HttpClientModule,
     CountriesSearchComponent,
     CountriesFilterComponent,
     CountriesListCardComponent,
@@ -34,17 +40,28 @@ import { switchMap } from 'rxjs';
   ],
 })
 export class CountriesListComponent {
+  readonly currentSearchString = signal<string>('');
   readonly selectedRegion = signal<string>('');
 
   readonly countries = toSignal(
-    toObservable(this.selectedRegion).pipe(
-      switchMap((selectedRegion) =>
-        selectedRegion
-          ? this.countriesService.findCountriesByRegion(selectedRegion)
-          : this.countriesService.getCountries()
-      )
+    combineLatest([
+      toObservable(this.currentSearchString).pipe(
+        debounceTime(200),
+        distinctUntilChanged()
+      ),
+      toObservable(this.selectedRegion),
+    ]).pipe(
+      switchMap(([currentSearchString, selectedRegion]) => {
+        if (currentSearchString) {
+          return this.countriesService.findCountriesByName(currentSearchString);
+        } else if (selectedRegion) {
+          return this.countriesService.findCountriesByRegion(selectedRegion);
+        } else {
+          return this.countriesService.getCountries();
+        }
+      })
     ),
-    { initialValue: [] }
+    { initialValue: [] as Country[] }
   );
 
   constructor(

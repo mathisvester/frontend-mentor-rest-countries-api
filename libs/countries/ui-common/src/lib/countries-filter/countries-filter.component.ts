@@ -12,5 +12,5 @@ import { FormsModule } from '@angular/forms';
 export class CountriesFilterComponent {
   @Output() regionChange = new EventEmitter<string>();
   region = '';
-  regions = ['Africa', 'Asia', 'Europe', 'Oceania'];
+  readonly regions = ['Africa', 'Asia', 'Europe', 'Oceania'];
 }

@@ -3,6 +3,18 @@
   @if(country$ | async; as country) {
   <div>
     <h1>{{ country.name }}</h1>
+    @if(country?.borders) {
+    <div>
+      Border Countries:
+      <ul>
+        @for(border of country.borders; track border) {
+        <li>
+          <a [routerLink]="['/countries', border]">{{ border }}</a>
+        </li>
+        }
+      </ul>
+    </div>
+    }
   </div>
   } @else {
   <div><p>Country not found!</p></div>

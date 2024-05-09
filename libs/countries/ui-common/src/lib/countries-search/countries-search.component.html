@@ -1,0 +1,6 @@
+<input
+  [attr.aria-label]="'Search for a country...'"
+  placeholder="Search for a country..."
+  [ngModel]="searchString"
+  (ngModelChange)="searchStringChange.emit($event)"
+/>

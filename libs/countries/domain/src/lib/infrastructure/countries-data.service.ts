@@ -27,7 +27,9 @@ export class CountriesDataService {
 
   findCountriesByName(name: string): Observable<Country[]> {
     return this.getCountries().pipe(
-      map((countries) => countries.filter((country) => country.name === name))
+      map((countries) =>
+        countries.filter((country) => country.name.includes(name))
+      )
     );
   }
 
