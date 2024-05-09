@@ -1,0 +1,14 @@
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'lib-button',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './button.component.html',
+  styleUrl: './button.component.css',
+})
+export class ButtonComponent {
+  @Input({ required: true }) label = '';
+  @Output() buttonClick = new EventEmitter<void>();
+}

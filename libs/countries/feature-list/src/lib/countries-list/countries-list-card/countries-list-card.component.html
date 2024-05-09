@@ -1,5 +1,5 @@
 @if(country) {
-<div>
+<div (click)="cardClick.emit(country.alpha2Code)">
   <h3>{{ country.name }}</h3>
 </div>
 }

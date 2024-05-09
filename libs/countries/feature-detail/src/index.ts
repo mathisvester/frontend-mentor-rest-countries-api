@@ -1,1 +1,1 @@
-export * from './lib/countries-feature-detail/countries-feature-detail.component';
+export * from './lib/countries-detail/countries-detail.component';

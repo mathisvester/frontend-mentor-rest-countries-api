@@ -1,0 +1,10 @@
+<lib-page
+  ><lib-button [label]="'Back'" (click)="navigateToList()"></lib-button>
+  @if(country$ | async; as country) {
+  <div>
+    <h1>{{ country.name }}</h1>
+  </div>
+  } @else {
+  <div><p>Country not found!</p></div>
+  }
+</lib-page>

@@ -9,10 +9,10 @@ export const appRoutes: Route[] = [
       ),
   },
   {
-    path: 'countries/:id',
+    path: 'countries/:countryCode',
     loadComponent: () =>
-      import('@rest-countries-api/countries/feature-list').then(
-        (m) => m.CountriesListComponent
+      import('@rest-countries-api/countries/feature-detail').then(
+        (m) => m.CountriesDetailComponent
       ),
   },
 ];

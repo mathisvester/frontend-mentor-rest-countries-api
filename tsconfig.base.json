@@ -23,7 +23,8 @@
       ],
       "@rest-countries-api/countries/feature-list": [
         "libs/countries/feature-list/src/index.ts"
-      ]
+      ],
+      "@rest-countries-api/ui-common": ["libs/shared/ui-common/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

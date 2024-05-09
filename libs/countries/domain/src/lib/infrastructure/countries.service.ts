@@ -10,6 +10,12 @@ export class CountriesService {
   constructor(private readonly httpClient: HttpClient) {}
 
   getCountries(): Observable<Country[]> {
-    return this.httpClient.get<Country[]>('https://restcountries.com/v3.1/all');
+    return this.httpClient.get<Country[]>('https://restcountries.com/v2/all');
+  }
+
+  findCountryByCountryCode(countryCode: string): Observable<Country> {
+    return this.httpClient.get<Country>(
+      `https://restcountries.eu/rest/v2/alpha/${countryCode}`
+    );
   }
 }

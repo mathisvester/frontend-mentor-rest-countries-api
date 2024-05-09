@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CountriesSearchComponent } from '../countries-search/countries-search.component';
 import { CountriesFilterComponent } from '../countries-filter/countries-filter.component';
 import { CountriesListCardComponent } from './countries-list-card/countries-list-card.component';
+import { PageComponent } from '@rest-countries-api/ui-common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-countries-list',
@@ -20,6 +22,7 @@ import { CountriesListCardComponent } from './countries-list-card/countries-list
     CountriesSearchComponent,
     CountriesFilterComponent,
     CountriesListCardComponent,
+    PageComponent,
   ],
   templateUrl: './countries-list.component.html',
   styleUrl: './countries-list.component.css',
@@ -35,5 +38,12 @@ export class CountriesListComponent {
     initialValue: [] as Country[],
   });
 
-  constructor(private readonly countriesService: CountriesService) {}
+  constructor(
+    private readonly countriesService: CountriesService,
+    private readonly router: Router
+  ) {}
+
+  navigateToDetail(countryCode: string) {
+    this.router.navigate(['/countries', countryCode]);
+  }
 }

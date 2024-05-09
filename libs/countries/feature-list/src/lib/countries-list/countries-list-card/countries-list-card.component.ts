@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Country } from '@rest-countries-api/countries-domain';
 
@@ -11,4 +11,5 @@ import { Country } from '@rest-countries-api/countries-domain';
 })
 export class CountriesListCardComponent {
   @Input({ required: true }) country: Country | undefined;
+  @Output() cardClick = new EventEmitter<string>();
 }
