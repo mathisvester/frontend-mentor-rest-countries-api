@@ -24,4 +24,19 @@ export class CountriesDataService {
       )
     );
   }
+
+  findCountriesByName(name: string): Observable<Country[]> {
+    return this.getCountries().pipe(
+      map((countries) => countries.filter((country) => country.name === name))
+    );
+  }
+
+  findCountriesByRegion(region: string): Observable<Country[]> {
+    console.log(region);
+    return this.getCountries().pipe(
+      map((countries) =>
+        countries.filter((country) => country.region === region)
+      )
+    );
+  }
 }

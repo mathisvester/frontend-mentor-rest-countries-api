@@ -1,1 +1,10 @@
-<p>countries-filter works!</p>
+<select
+  [attr.aria-label]="'Filter by region'"
+  [ngModel]="region"
+  (ngModelChange)="regionChange.emit($event)"
+>
+  <option [value]="''">Filter by region</option>
+  @for(region of regions; track region) {
+  <option [value]="region">{{ region }}</option>
+  }
+</select>

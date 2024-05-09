@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   CountriesDataService,
   CountriesService,
-  Country,
 } from '@rest-countries-api/countries-domain';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { HttpClientModule } from '@angular/common/http';
 import { CountriesSearchComponent } from '../countries-search/countries-search.component';
 import { CountriesFilterComponent } from '../countries-filter/countries-filter.component';
 import { CountriesListCardComponent } from './countries-list-card/countries-list-card.component';
 import { PageComponent } from '@rest-countries-api/ui-common';
 import { Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'lib-countries-list',
@@ -34,9 +34,18 @@ import { Router } from '@angular/router';
   ],
 })
 export class CountriesListComponent {
-  readonly countries = toSignal(this.countriesService.getCountries(), {
-    initialValue: [] as Country[],
-  });
+  readonly selectedRegion = signal<string>('');
+
+  readonly countries = toSignal(
+    toObservable(this.selectedRegion).pipe(
+      switchMap((selectedRegion) =>
+        selectedRegion
+          ? this.countriesService.findCountriesByRegion(selectedRegion)
+          : this.countriesService.getCountries()
+      )
+    ),
+    { initialValue: [] }
+  );
 
   constructor(
     private readonly countriesService: CountriesService,
