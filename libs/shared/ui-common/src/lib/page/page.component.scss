@@ -1,0 +1,33 @@
+@use '../styles/variables';
+@use '../styles/mixins';
+
+nav {
+  background: map-get(variables.$light-theme, 'element-background');
+  padding: 1.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow:
+    0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1);
+
+  @media (prefers-color-scheme: dark) {
+    background: map-get(variables.$dark-theme, 'element-background');
+  }
+}
+
+span {
+  font-size: variables.$font-size-lg;
+  font-weight: variables.$font-weight-bold;
+}
+
+button {
+  @include mixins.reset-button();
+  font-size: variables.$font-size-sm;
+  font-weight: variables.$font-weight-medium;
+  cursor: pointer;
+}
+
+main {
+  padding: 1.5rem 1rem;
+}

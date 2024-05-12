@@ -1,0 +1,62 @@
+@if (country) {
+  <lib-description-list>
+    <dt>Native Name:</dt>
+    <dd>{{ country.nativeName }}</dd>
+    <dt>Population:</dt>
+    <dd>{{ country.population | number }}</dd>
+    <dt>Region:</dt>
+    <dd>{{ country.region }}</dd>
+    <dt>Sub Region:</dt>
+    <dd>{{ country.subregion }}</dd>
+    <dt>Capital:</dt>
+    <dd>{{ country.capital ?? '-' }}</dd>
+  </lib-description-list>
+  <lib-description-list>
+    <dt>Top Level Domain:</dt>
+    <dd>
+      @for (
+        topLevelDomain of country.topLevelDomain;
+        track topLevelDomain;
+        let last = $last
+      ) {
+        @if (last) {
+          {{ topLevelDomain }}
+        } @else {
+          {{ topLevelDomain + ', ' }}
+        }
+      }
+    </dd>
+    <dt>Currencies:</dt>
+    <dd>
+      @if (country.currencies) {
+        @for (
+          currency of country?.currencies;
+          track currency;
+          let last = $last
+        ) {
+          @if (last) {
+            {{ currency.name }}
+          } @else {
+            {{ currency.name + ', ' }}
+          }
+        }
+      } @else {
+        -
+      }
+    </dd>
+    <dt>Languages:</dt>
+    <dd>
+      @if (country.languages.length >= 1) {
+        @for (language of country.languages; track language; let last = $last) {
+          @if (last) {
+            {{ language.name }}
+          } @else {
+            {{ language.name + ', ' }}
+          }
+        }
+      } @else {
+        -
+      }
+    </dd>
+  </lib-description-list>
+}

@@ -1,0 +1,30 @@
+@use '../styles/variables';
+
+dl {
+  font-size: variables.$font-size-base;
+  margin: 0;
+
+  &:before,
+  &:after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+}
+
+:host ::ng-deep {
+  dt,
+  dd {
+    float: left;
+  }
+
+  dt {
+    font-weight: variables.$font-weight-medium;
+    clear: left;
+  }
+
+  dd {
+    margin-left: 0;
+    text-indent: 4px;
+  }
+}

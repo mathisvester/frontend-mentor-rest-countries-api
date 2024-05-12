@@ -1,0 +1,9 @@
+@use 'libs/shared/ui-common/src/lib/styles/_variables.scss';
+
+:host {
+  display: grid;
+
+  @media (min-width: map-get(variables.$grid-breakpoints, 'sm')) {
+    grid-template-columns: repeat(2, 50%);
+  }
+}

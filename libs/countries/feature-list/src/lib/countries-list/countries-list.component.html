@@ -1,18 +1,17 @@
 <lib-page>
   <header>
     <lib-countries-search
-      (searchStringChange)="currentSearchString.set($event)"
-    ></lib-countries-search>
+      (searchStringChange)="
+        currentSearchString.set($event)
+      "></lib-countries-search>
     <lib-countries-filter
-      (regionChange)="selectedRegion.set($event)"
-    ></lib-countries-filter>
+      (regionChange)="selectedRegion.set($event)"></lib-countries-filter>
   </header>
-  <div>
+  <div class="content">
     @for (country of countries(); track country.alpha2Code) {
       <lib-countries-list-card
         [country]="country"
-        (cardClick)="navigateToDetail($event)"
-      ></lib-countries-list-card>
+        (cardClick)="navigateToDetail($event)"></lib-countries-list-card>
     }
   </div>
 </lib-page>

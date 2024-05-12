@@ -1,0 +1,21 @@
+@use 'libs/shared/ui-common/src/lib/styles/_variables.scss';
+
+header {
+  margin-bottom: 2rem;
+}
+
+.content {
+  display: grid;
+
+  @media (min-width: map-get(variables.$grid-breakpoints, 'sm')) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: map-get(variables.$grid-breakpoints, 'md')) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (min-width: map-get(variables.$grid-breakpoints, 'xl')) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

@@ -1,0 +1,12 @@
+@if (country && country?.borders) {
+  <div>
+    Border Countries:
+    <ul>
+      @for (border of country.borders; track border) {
+        <li>
+          <a [routerLink]="['/countries', border]">{{ border }}</a>
+        </li>
+      }
+    </ul>
+  </div>
+}

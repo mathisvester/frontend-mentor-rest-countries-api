@@ -1,20 +1,19 @@
-<lib-page
-  ><lib-button [label]="'Back'" (click)="navigateToList()"></lib-button>
+<lib-page>
+  <header>
+    <lib-button [label]="'Back'" (click)="navigateToList()"></lib-button>
+  </header>
   @if (country$ | async; as country) {
-    <div>
-      <h1>{{ country.name }}</h1>
-      @if (country?.borders) {
-        <div>
-          Border Countries:
-          <ul>
-            @for (border of country.borders; track border) {
-              <li>
-                <a [routerLink]="['/countries', border]">{{ border }}</a>
-              </li>
-            }
-          </ul>
-        </div>
-      }
+    <div class="content">
+      <figure>
+        <img [ngSrc]="country.flags.svg" [alt]="country.name" fill />
+      </figure>
+      <div>
+        <h1>{{ country.name }}</h1>
+        <lib-countries-detail-description-list
+          [country]="country"></lib-countries-detail-description-list>
+        <lib-countries-detail-border-countries
+          [country]="country"></lib-countries-detail-border-countries>
+      </div>
     </div>
   } @else {
     <div><p>Country not found!</p></div>

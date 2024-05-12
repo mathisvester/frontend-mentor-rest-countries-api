@@ -1,0 +1,38 @@
+$white: hsl(0, 0%, 100%);
+
+$gray-100: hsl(0, 0%, 98%);
+$gray-300: hsl(0, 0%, 52%);
+
+$blue-500: hsl(209, 23%, 22%);
+$blue-700: hsl(207, 26%, 17%);
+$blue-900: hsl(200, 15%, 8%);
+
+$light-theme: (
+  'color': $blue-900,
+  'background': $gray-100,
+  'element-background': $white,
+  'form-control-background': $white,
+  'form-control-color': $gray-300,
+);
+
+$dark-theme: (
+  'color': $white,
+  'background': $blue-700,
+  'element-background': $blue-500,
+  'form-control-background': $blue-500,
+  'form-control-color': $white,
+);
+
+$font-weight-normal: 300;
+$font-weight-medium: 600;
+$font-weight-bold: 800;
+
+$font-size-base: 1rem; // 16px
+$font-size-sm: 0.875rem; // 14px
+$font-size-lg: 1.25rem; // 20px
+
+$grid-breakpoints: (
+  'sm': 768px,
+  'md': 992px,
+  'xl': 1440px,
+);

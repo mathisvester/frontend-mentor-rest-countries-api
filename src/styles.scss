@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'libs/shared/ui-common/src/lib/styles/_variables.scss';
+
+/* nunito-sans-300 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: variables.$font-weight-normal;
+  src: url('./assets/fonts/nunito-sans-v15-latin/nunito-sans-v15-latin-300.woff2')
+    format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* nunito-sans-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: variables.$font-weight-medium;
+  src: url('./assets/fonts/nunito-sans-v15-latin/nunito-sans-v15-latin-600.woff2')
+    format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* nunito-sans-800 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: variables.$font-weight-bold;
+  src: url('./assets/fonts/nunito-sans-v15-latin/nunito-sans-v15-latin-800.woff2')
+    format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+body {
+  background: map-get(variables.$light-theme, 'background');
+  color: map-get(variables.$light-theme, 'color');
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: variables.$font-weight-normal;
+  font-size: variables.$font-size-base;
+  line-height: 1.5;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: map-get(variables.$dark-theme, 'background');
+    color: map-get(variables.$dark-theme, 'color');
+  }
+}

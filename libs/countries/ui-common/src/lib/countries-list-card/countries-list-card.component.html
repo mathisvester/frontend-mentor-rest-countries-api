@@ -1,5 +1,18 @@
 @if (country) {
   <div (click)="cardClick.emit(country.alpha2Code)">
-    <h3>{{ country.name }}</h3>
+    <figure>
+      <img [ngSrc]="country.flags.svg" [alt]="country.name" fill />
+    </figure>
+    <div class="content">
+      <h3>{{ country.name }}</h3>
+      <lib-description-list>
+        <dt>Population:</dt>
+        <dd>{{ country.population | number }}</dd>
+        <dt>Region:</dt>
+        <dd>{{ country.region }}</dd>
+        <dt>Capital:</dt>
+        <dd>{{ country.capital ?? '-' }}</dd>
+      </lib-description-list>
+    </div>
   </div>
 }

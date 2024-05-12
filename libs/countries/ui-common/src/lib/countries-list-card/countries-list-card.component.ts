@@ -1,13 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Country } from '@rest-countries-api/countries-domain';
+import { DescriptionListComponent } from '@rest-countries-api/ui-common';
 
 @Component({
   selector: 'lib-countries-list-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage, DescriptionListComponent],
   templateUrl: './countries-list-card.component.html',
-  styleUrl: './countries-list-card.component.css',
+  styleUrl: './countries-list-card.component.scss',
 })
 export class CountriesListCardComponent {
   @Input({ required: true }) country: Country | undefined;

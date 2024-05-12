@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './countries-search.component.html',
-  styleUrl: './countries-search.component.css',
+  styleUrl: './countries-search.component.scss',
 })
 export class CountriesSearchComponent {
   searchString = '';

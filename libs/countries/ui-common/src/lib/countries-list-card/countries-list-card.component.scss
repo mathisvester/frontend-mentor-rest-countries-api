@@ -1,0 +1,36 @@
+@use 'libs/shared/ui-common/src/lib/styles/_variables.scss';
+
+:host {
+  background: map-get(variables.$light-theme, 'element-background');
+  display: block;
+  margin: 0 2.5rem 2rem 2.5rem;
+  border-radius: 6px;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  overflow: hidden;
+  cursor: pointer;
+
+  @media (prefers-color-scheme: dark) {
+    background: map-get(variables.$dark-theme, 'element-background');
+  }
+}
+
+figure {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.content {
+  padding: 2rem 1.5rem 3rem 1.5rem;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}

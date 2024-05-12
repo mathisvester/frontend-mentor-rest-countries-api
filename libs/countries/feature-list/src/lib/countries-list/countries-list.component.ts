@@ -31,7 +31,7 @@ import {
     PageComponent,
   ],
   templateUrl: './countries-list.component.html',
-  styleUrl: './countries-list.component.css',
+  styleUrl: './countries-list.component.scss',
   providers: [
     {
       provide: CountriesService,
@@ -47,7 +47,7 @@ export class CountriesListComponent {
     combineLatest([
       toObservable(this.currentSearchString).pipe(
         debounceTime(200),
-        distinctUntilChanged(),
+        distinctUntilChanged()
       ),
       toObservable(this.selectedRegion),
     ]).pipe(
@@ -59,14 +59,14 @@ export class CountriesListComponent {
         } else {
           return this.countriesService.getCountries();
         }
-      }),
+      })
     ),
-    { initialValue: [] as Country[] },
+    { initialValue: [] as Country[] }
   );
 
   constructor(
     private readonly countriesService: CountriesService,
-    private readonly router: Router,
+    private readonly router: Router
   ) {}
 
   navigateToDetail(countryCode: string) {
