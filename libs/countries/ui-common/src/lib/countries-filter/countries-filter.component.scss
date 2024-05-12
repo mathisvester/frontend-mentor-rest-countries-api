@@ -1,0 +1,65 @@
+@use 'libs/shared/ui-common/src/lib/styles/_variables.scss';
+@use 'libs/shared/ui-common/src/lib/styles/_mixins.scss';
+
+button {
+  @include mixins.reset-button();
+
+  &.dropdown-toggle {
+    background: map-get(variables.$light-theme, 'form-control-background');
+    color: map-get(variables.$light-theme, 'form-control-color');
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    box-shadow:
+      0 1px 3px 0 rgb(0 0 0 / 0.1),
+      0 1px 2px -1px rgb(0 0 0 / 0.1);
+    font-size: variables.$font-size-sm;
+    display: block;
+    width: 100%;
+    text-align: left;
+
+    @media (prefers-color-scheme: dark) {
+      background: map-get(variables.$dark-theme, 'form-control-background');
+      color: map-get(variables.$dark-theme, 'form-control-color');
+    }
+  }
+
+  &.dropdown-menu-item {
+    display: block;
+    padding: 0.5rem 1.5rem;
+    white-space: nowrap;
+    width: 100%;
+    text-align: left;
+    font-size: variables.$font-size-sm;
+  }
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  min-width: 200px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  margin-top: 4px;
+  right: 0;
+  background: map-get(variables.$light-theme, 'element-background');
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  z-index: 1000;
+  min-width: 100%;
+  border-radius: 6px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  @media (prefers-color-scheme: dark) {
+    background: map-get(variables.$dark-theme, 'element-background');
+  }
+
+  .open & {
+    display: block;
+  }
+}

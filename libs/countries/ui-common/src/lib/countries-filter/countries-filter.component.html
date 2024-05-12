@@ -1,9 +1,32 @@
-<select
-  [attr.aria-label]="'Filter by region'"
-  [ngModel]="region"
-  (ngModelChange)="regionChange.emit($event)">
-  <option [value]="''">Filter by region</option>
-  @for (region of regions; track region) {
-    <option [value]="region">{{ region }}</option>
-  }
-</select>
+<div class="dropdown" [ngClass]="{ open: isOpen() }">
+  <button
+    class="dropdown-toggle"
+    id="dropdownMenuButtonRegion"
+    (click)="dropdownButtonClick$$.next()">
+    @if (selectedRegion()) {
+      {{ selectedRegion() }}
+    } @else {
+      Filter by Region
+    }
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonRegion">
+    <button
+      [ngClass]="{
+        'dropdown-menu-item': true,
+        active: selectedRegion() === ''
+      }"
+      (click)="selectedRegion.set('')">
+      Filter by Region
+    </button>
+    @for (region of regions; track region) {
+      <button
+        [ngClass]="{
+          'dropdown-menu-item': true,
+          active: selectedRegion() === region
+        }"
+        (click)="selectedRegion.set(region)">
+        {{ region }}
+      </button>
+    }
+  </div>
+</div>

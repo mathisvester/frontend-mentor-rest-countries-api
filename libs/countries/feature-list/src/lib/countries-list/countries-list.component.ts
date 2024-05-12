@@ -12,6 +12,7 @@ import {
   combineLatest,
   debounceTime,
   distinctUntilChanged,
+  startWith,
   switchMap,
 } from 'rxjs';
 import {
@@ -47,7 +48,8 @@ export class CountriesListComponent {
     combineLatest([
       toObservable(this.currentSearchString).pipe(
         debounceTime(200),
-        distinctUntilChanged()
+        distinctUntilChanged(),
+        startWith('')
       ),
       toObservable(this.selectedRegion),
     ]).pipe(
