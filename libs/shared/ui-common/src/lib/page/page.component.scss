@@ -26,6 +26,11 @@ button {
   font-size: variables.$font-size-sm;
   font-weight: variables.$font-weight-medium;
   cursor: pointer;
+  color: map-get(variables.$light-theme, 'color');
+
+  @media (prefers-color-scheme: dark) {
+    color: map-get(variables.$dark-theme, 'color');
+  }
 }
 
 main {

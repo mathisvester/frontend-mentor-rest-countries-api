@@ -2,7 +2,8 @@
   <button
     class="dropdown-toggle"
     id="dropdownMenuButtonRegion"
-    (click)="dropdownButtonClick$$.next()">
+    (click)="dropdownButtonClick$$.next()"
+    #dropdownToggle>
     @if (selectedRegion()) {
       {{ selectedRegion() }}
     } @else {
@@ -10,21 +11,17 @@
     }
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonRegion">
-    <button
-      [ngClass]="{
-        'dropdown-menu-item': true,
-        active: selectedRegion() === ''
-      }"
-      (click)="selectedRegion.set('')">
-      Filter by Region
-    </button>
     @for (region of regions; track region) {
       <button
         [ngClass]="{
           'dropdown-menu-item': true,
           active: selectedRegion() === region
         }"
-        (click)="selectedRegion.set(region)">
+        (click)="
+          selectedRegion() === region
+            ? selectedRegion.set('')
+            : selectedRegion.set(region)
+        ">
         {{ region }}
       </button>
     }

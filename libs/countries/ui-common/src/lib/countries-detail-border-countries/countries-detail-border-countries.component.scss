@@ -1,0 +1,9 @@
+@use 'libs/shared/ui-common/src/lib/styles/_variables.scss';
+
+a {
+  color: map-get(variables.$light-theme, 'color');
+
+  @media (prefers-color-scheme: dark) {
+    color: map-get(variables.$dark-theme, 'color');
+  }
+}

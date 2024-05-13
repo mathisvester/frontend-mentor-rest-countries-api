@@ -3,10 +3,14 @@
 
 button {
   @include mixins.reset-button();
+  color: map-get(variables.$light-theme, 'form-control-color');
+
+  @media (prefers-color-scheme: dark) {
+    color: map-get(variables.$dark-theme, 'form-control-color');
+  }
 
   &.dropdown-toggle {
     background: map-get(variables.$light-theme, 'form-control-background');
-    color: map-get(variables.$light-theme, 'form-control-color');
     padding: 1rem 1.5rem;
     border-radius: 6px;
     box-shadow:
@@ -19,7 +23,6 @@ button {
 
     @media (prefers-color-scheme: dark) {
       background: map-get(variables.$dark-theme, 'form-control-background');
-      color: map-get(variables.$dark-theme, 'form-control-color');
     }
   }
 
