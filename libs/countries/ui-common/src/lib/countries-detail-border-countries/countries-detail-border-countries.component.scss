@@ -1,9 +1,39 @@
 @use 'libs/shared/ui-common/src/lib/styles/_variables.scss';
 
+div {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+span {
+  white-space: nowrap;
+  font-weight: variables.$font-weight-medium;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 a {
   color: map-get(variables.$light-theme, 'color');
+  background: map-get(variables.$light-theme, 'element-background');
+  padding: 0.4rem 1.5rem;
+  font-size: variables.$font-size-sm;
+  box-shadow: 0 0 4px 2px rgb(0 0 0 / 6%);
+  display: block;
+  text-decoration: none;
+  border-radius: 2px;
+  line-height: 1;
+  white-space: nowrap;
 
   @media (prefers-color-scheme: dark) {
     color: map-get(variables.$dark-theme, 'color');
+    background: map-get(variables.$dark-theme, 'element-background');
   }
 }
